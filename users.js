@@ -1,0 +1,51 @@
+// module.exports.users = [{
+//         id: 1,
+//         Username: "NickHoke",
+//         Password: "1111",
+//         Email: "eggydoc@gmail.com",
+//         Birthday: "12/5/1990",
+//         FavoriteMovies: [],
+//     },
+//     {
+//         id: 2,
+//         Username: "KenGriffey",
+//         Password: "2424",
+//         Email: "thekid@yahoo.com",
+//         Birthday: "3/25/1975",
+//         FavoriteMovies: [],
+//     },
+//     {
+//         id: 3,
+//         Username: "RikSmits",
+//         Password: "5555",
+//         Email: "rsmits@gmail.com",
+//         Birthday: "4/23/1966",
+//         FavoriteMovies: [],
+//     },
+// ];
+
+module.exports.users = [{
+        id: 1,
+        Username: "sammy",
+        Password: "1234",
+        Email: "h.monet1104@gmail.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+    {
+        id: 2,
+        Username: "Natasha Keating",
+        Password: "5678",
+        Email: "h.monet1104@yahoo.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+    {
+        id: 3,
+        Username: "Sean Keating",
+        Password: "5555",
+        Email: "seank@gmail.com",
+        Birthday: "11/04/1990",
+        FavoriteMovies: [],
+    },
+];
