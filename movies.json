@@ -1,0 +1,183 @@
+{
+    "_id": {
+        "$oid": "5edd5ad842e2f6dedb7e4f91"
+    },
+    "Title": "Silence of the Lambs",
+    "Description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+    "Genre": {
+        "Name": "Thriller",
+        "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+    },
+    "Director": {
+        "Name": "Jonathan Demme",
+        "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+        "Birth": "1944",
+        "Death": "2017"
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
+    "Featured": true
+} {
+    "_id": {
+        "$oid": "5edfa87f15e349fa64adff9f"
+    },
+    "Title": "Joker",
+    "Description": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.",
+    "Genre": {
+        "Name": "Drama",
+        "Description": "In film and television, drama is a genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone. ... These terms tend to indicate a particular setting or subject-matter, or else they qualify the otherwise serious tone of a drama with elements that encourage a broader range of moods."
+    },
+    "Director": {
+        "Name": "Todd Phillips",
+        "Bio": "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), Old School (2003) and Due Date (2010).",
+        "Birth": "1970",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+    "Featured": true
+} {
+    "_id": {
+        "$oid": "5edfa9ce15e349fa64adffa1"
+    },
+    "Title": "Harry Potter and the Deathly Hallows: Part 2",
+    "Description": "Harry, Ron, and Hermione search for Voldemort's remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.",
+    "Genre": {
+        "Name": "Adventure",
+        "Description": "Adventure. Adventure film is a genre that revolves around the conquests and explorations of a protagonist. The purpose of the conquest can be to retrieve a person or treasure, but often the main focus is simply the pursuit of the unknown. These films generally take place in exotic locations and play on historical myths."
+    },
+    "Director": {
+        "Name": "David Yates",
+        "Bio": "David Yates was born on October 8, 1963 in St. Helens, Merseyside, England. He is a director and producer, known for Harry Potter and the Deathly Hallows: Part 2 (2011), Harry Potter and the Order of the Phoenix (2007) and The Legend of Tarzan (2016).",
+        "Birth": "1963",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BMjIyZGU4YzUtNDkzYi00ZDRhLTljYzctYTMxMDQ4M2E0Y2YxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": true
+} {
+    "_id": {
+        "$oid": "5edfac8a15e349fa64adffa2"
+    },
+    "Title": "The Notebook",
+    "Description": "A poor yet passionate young man falls in love with a rich young woman, giving her a sense of freedom, but they are soon separated because of their social differences.",
+    "Genre": {
+        "Name": "Romance",
+        "Description": "Romance films or romance movies are romantic love stories recorded in visual media for broadcast in theaters and on TV that focus on passion, emotion, and the affectionate romantic involvement of the main characters and the journey that their love takes them through dating, courtship or marriage."
+    },
+    "Director": {
+        "Name": "Nick Cassavetes",
+        "Bio": "Nick Cassavetes was born in New York City, the son of actress Gena Rowlands and Greek-American actor and film director John Cassavetes. He has directed several films, including John Q (2002), Alpha Dog (2006), She''s So Lovely (1997), Unhook the Stars (1996), The Notebook (2004), and My Sister''s Keeper (2009). He also adapted the screenplay for Blow (2001) and wrote the dialogue for the Justin Timberlake music video, What Goes Around... Comes Around",
+        "Birth": "1959",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BMTk3OTM5Njg5M15BMl5BanBnXkFtZTYwMzA0ODI3._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": true,
+    "Bio": "Nick Cassavetes is an American actor, director, and writer. Some of his most popular films include The Notebook, John Q, and Yellow."
+} {
+    "_id": {
+        "$oid": "5edfad9c15e349fa64adffa3"
+    },
+    "Title": "John Q",
+    "Description": "John Quincy Archibald takes a hospital emergency room hostage when his insurance won''t cover his son''s heart transplant.",
+    "Genre": {
+        "Name": "Thriller",
+        "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+    },
+    "Director": {
+        "Name": "Nick Cassavetes",
+        "Bio": "Nick Cassavetes was born in New York City, the son of actress Gena Rowlands and Greek-American actor and film director John Cassavetes. He has directed several films, including John Q (2002), Alpha Dog (2006), She''s So Lovely (1997), Unhook the Stars (1996), The Notebook (2004), and My Sister''s Keeper (2009). He also adapted the screenplay for Blow (2001) and wrote the dialogue for the Justin Timberlake music video, What Goes Around... Comes Around",
+        "Birth": "1959",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BMTcxNTQ1MzAyOF5BMl5BanBnXkFtZTYwNDg0ODk4._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": true,
+    "Bio": "Nick Cassavetes is an American actor, director, and writer. Some of his most popular films include The Notebook, John Q, and Yellow."
+} {
+    "_id": {
+        "$oid": "5edfae4f15e349fa64adffa4"
+    },
+    "Title": "Old School",
+    "Description": "Three friends attempt to recapture their glory days by opening up a fraternity near their alma mater.",
+    "Genre": {
+        "Name": "Comedy",
+        "Description": "A genre of film in which the main emphasis is on humor."
+    },
+    "Director": {
+        "Name": "Todd Phillips",
+        "Bio": "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), Old School (2003) and Due Date (2010).",
+        "Birth": "1970",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BYzI4NDIzMDgtNGNkZi00MTI2LWJhYzgtYzM5NThhMTQ0OGIzXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": true
+} {
+    "_id": {
+        "$oid": "5edfaeff15e349fa64adffa5"
+    },
+    "Title": "Heavyweights",
+    "Description": "Plump kids are lured into joining a posh fat camp with the promise of quick weight loss and good times, only to find that the facility is a woodland hellhole run by a psycho ex-fitness instructor.",
+    "Genre": {
+        "Name": "Comedy",
+        "Description": "A genre of film in which the main emphasis is on humor."
+    },
+    "Director": {
+        "Name": "Steven Brill",
+        "Bio": "Steve Brill is an American actor, film producer, director, and screenwriter. He directed and co-wrote Little Nicky and directed Mr. Deeds, Without A Paddle, Heavyweights, and Drillbit Taylor. He has had cameo roles in all three Mighty Ducks movies, and appeared in The Wedding Singer, Mr. Deeds and Knocked Up.",
+        "Birth": "1962",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BMmUzMmVjZjMtMThkMS00NDRkLWJhYmQtMjcwMmJkY2ExYmQ5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": true
+} {
+    "_id": {
+        "$oid": "5edfafb115e349fa64adffa6"
+    },
+    "Title": "Taken",
+    "Description": "An ex-soldier traveling through Europe embarks on a frantic quest to rescue his daughter after the young girl is abducted by slave traders.",
+    "Genre": {
+        "Name": "Action",
+        "Description": "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats and frantic chases."
+    },
+    "Director": {
+        "Name": "Pierre Morel",
+        "Bio": "Pierre Morel is a French film director and cinematographer. His work includes District 13, From Paris with Love, and Taken.",
+        "Birth": "1964",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BMTM4NzQ0OTYyOF5BMl5BanBnXkFtZTcwMDkyNjQyMg@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": true
+} {
+    "_id": {
+        "$oid": "5edfb03715e349fa64adffa7"
+    },
+    "Title": "The Expendables",
+    "Description": "A CIA operative hires a team of mercenaries to eliminate a Latin dictator and a renegade CIA agent.",
+    "Genre": {
+        "Name": "Action",
+        "Description": "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats and frantic chases."
+    },
+    "Director": {
+        "Name": "Sylvester Stallone",
+        "Bio": "Sylvester Stallone is an American actor, director, screenwriter, producer and artist.",
+        "Birth": "1946",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BNTUwODQyNjM0NF5BMl5BanBnXkFtZTcwNDMwMTU1Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": false
+} {
+    "_id": {
+        "$oid": "5edfb0e615e349fa64adffa8"
+    },
+    "Title": "Get Out",
+    "Description": "A young African-American visits his white girlfriend''s parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
+    "Genre": {
+        "Name": "Horror",
+        "Description": "A horror film is a film that seeks to elicit fear for entertainment purposes."
+    },
+    "Director": {
+        "Name": "Jordan Peele",
+        "Bio": "Jordan Haworth Peele is an American actor, comedian, writer, director, and producer. He is best known for his television and film work in the comedy and horror genres.",
+        "Birth": "1979",
+        "Death": ""
+    },
+    "ImagePath": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "Featured": false
+}

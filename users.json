@@ -1,0 +1,56 @@
+{
+    "_id": {
+        "$oid": "5edfd864d58f3e94f229ddfc"
+    },
+    "Username": "NickHoke",
+    "Password": "1111",
+    "Email": "eggydoc@gmail.com",
+    "Birthday": {
+        "$date": "1990-02-19T00:00:00.000Z"
+    },
+    "FavoriteMovies": []
+} {
+    "_id": {
+        "$oid": "5edfd8acd58f3e94f229ddfd"
+    },
+    "Username": "KenGriffey",
+    "Password": "2424",
+    "Email": "thekid@yahoo.com",
+    "Birthday": {
+        "$date": "1975-03-25T00:00:00.000Z"
+    },
+    "FavoriteMovies": []
+} {
+    "_id": {
+        "$oid": "5edfd8f1d58f3e94f229ddfe"
+    },
+    "Username": "RikSmits",
+    "Password": "5555",
+    "Email": "rsmits@gmail.com",
+    "Birthday": {
+        "$date": "1966-04-23T00:00:00.000Z"
+    },
+    "FavoriteMovies": []
+} {
+    "_id": {
+        "$oid": "5edfd908d58f3e94f229ddff"
+    },
+    "Username": "ReggieWayne",
+    "Password": "2658",
+    "Email": "theucolts@gmail.com",
+    "Birthday": {
+        "$date": "1970-01-01T00:00:00.000Z"
+    },
+    "FavoriteMovies": []
+} {
+    "_id": {
+        "$oid": "5edfd949d58f3e94f229de00"
+    },
+    "Username": "WayneGretzky",
+    "Password": "9999",
+    "Email": "thegreatone@juno.com",
+    "Birthday": {
+        "$date": "1962-11-25T00:00:00.000Z"
+    },
+    "FavoriteMovies": []
+}
