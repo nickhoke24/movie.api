@@ -12,19 +12,23 @@ const mongoose = require("mongoose");
 const Models = require("./models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
-mongoose.connect("mongodb://localhost:27017/myFlixDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+mongoose.connect(
+  "mongodb+srv://nickhoke:nickhoke@myflixdb-jpp8n.mongodb.net/myFlixDB?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 const passport = require("passport");
 require("./passport");
 let auth = require("./auth")(app);
 const cors = require("cors");
 app.use(cors());
-const {
-  check,
-  validationResult
-} = require("express-validator");
+const { check, validationResult } = require("express-validator");
 
 // CORS implemented
 let allowedOrigins = ["http://localhost:8080", "http://testsite.com"];
@@ -68,8 +72,8 @@ app.get(
   }),
   (req, res) => {
     Movies.findOne({
-        Title: req.params.Title,
-      })
+      Title: req.params.Title,
+    })
       .then((movie) => {
         res.json(movie);
       })
@@ -88,8 +92,8 @@ app.get(
   }),
   (req, res) => {
     Movies.findOne({
-        "Genre.Name": req.params.Name,
-      })
+      "Genre.Name": req.params.Name,
+    })
       .then((movie) => {
         res.json(movie.Genre);
       })
@@ -108,8 +112,8 @@ app.get(
   }),
   (req, res) => {
     Movies.findOne({
-        "Director.Name": req.params.Name,
-      })
+      "Director.Name": req.params.Name,
+    })
       .then((movie) => {
         res.json(movie.Director);
       })
@@ -120,15 +124,9 @@ app.get(
   }
 );
 
-app.get(
-  "/users",
-  passport.authenticate("jwt", {
-    session: false,
-  }),
-  (req, res) => {
-    Users.find().then((users) => res.json(users));
-  }
-);
+app.get("/users", (req, res) => {
+  Users.find().then((users) => res.json(users));
+});
 
 app.get("/users/:Username", (req, res) => {
   res.json(
@@ -143,7 +141,7 @@ app.post(
   "/users",
   [
     check("Username", "Username is required").isLength({
-      min: 5
+      min: 5,
     }),
     check(
       "Username",
@@ -156,23 +154,23 @@ app.post(
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
-        errors: errors.array()
+        errors: errors.array(),
       });
     }
     let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({
-        Username: req.body.Username,
-      })
+      Username: req.body.Username,
+    })
       .then((user) => {
         if (user) {
           return res.status(400).send(req.body.Username + "already exists");
         } else {
           Users.create({
-              Username: req.body.Username,
-              Password: hashedPassword,
-              Email: req.body.Email,
-              Birthday: req.body.Birthday,
-            })
+            Username: req.body.Username,
+            Password: hashedPassword,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
+          })
             .then((user) => {
               res.status(201).json(user);
             })
@@ -196,16 +194,19 @@ app.put(
     session: false,
   }),
   (req, res) => {
-    Users.findOneAndUpdate({
+    Users.findOneAndUpdate(
+      {
         Username: req.params.Username,
-      }, {
+      },
+      {
         $set: {
           Username: req.body.Username,
           Password: req.body.Password,
           Email: req.body.Email,
           Birthday: req.body.Birthday,
         },
-      }, {
+      },
+      {
         new: true,
       },
       (err, updatedUser) => {
@@ -227,13 +228,16 @@ app.post(
     session: false,
   }),
   (req, res) => {
-    Users.findOneAndUpdate({
+    Users.findOneAndUpdate(
+      {
         Username: req.params.Username,
-      }, {
+      },
+      {
         $push: {
           FavoriteMovies: req.params.MovieID,
         },
-      }, {
+      },
+      {
         new: true,
       },
       (err, updatedUser) => {
@@ -255,13 +259,16 @@ app.delete(
     session: false,
   }),
   (req, res) => {
-    Users.findOneAndUpdate({
+    Users.findOneAndUpdate(
+      {
         Username: req.params.Username,
-      }, {
+      },
+      {
         $pull: {
           FavoriteMovies: req.params.MovieID,
         },
-      }, {
+      },
+      {
         new: true,
       },
       (error, updatedUser) => {
@@ -284,8 +291,8 @@ app.delete(
   }),
   (req, res) => {
     Users.findOneAndRemove({
-        Username: req.params.Username,
-      })
+      Username: req.params.Username,
+    })
       .then((user) => {
         if (!user) {
           res.status(400).send(req.params.Username + " was not found");
@@ -313,7 +320,7 @@ app.use(function (err, req, res, next) {
 
 // listen for requests
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0', () => {
-  console.log('Listening on Port ' + port);
+app.listen(port, "0.0.0.0", () => {
+  console.log("Listening on Port " + port);
 });
 // app.listen(8080, () => console.log("myFlix is listening on port 8080."));
