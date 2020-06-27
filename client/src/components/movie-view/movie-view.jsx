@@ -1,16 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   constructor() {
     super();
-    this.goBack = this.goBack.bind(this);
-    this.state = {};
-  }
 
-  goBack() {
-    // this.props.history.goBack();
-    window.location.reload();
+    this.state = {};
   }
 
   render() {
@@ -38,7 +32,6 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
-        <button onClick={this.goBack}>Go Back</button>
       </div>
     );
   }

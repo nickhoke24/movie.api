@@ -7,13 +7,18 @@ import { MovieView } from "../movie-view/movie-view";
 export class MainView extends React.Component {
   constructor() {
     super();
-    this.state = { movies: null, selectedMovie: null };
-  }
 
+    this.state = {
+      movies: null,
+      selectedMovie: null,
+    };
+  }
+  // One of the "hooks" available in a React Component
   componentDidMount() {
     axios
       .get("https://myflixdbnickhoke.herokuapp.com/movies")
       .then((response) => {
+        // Assign the result to the state
         this.setState({
           movies: response.data,
         });
@@ -31,7 +36,10 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, selectedMovie } = this.state;
+
+    // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
+
     return (
       <div className="main-view">
         {selectedMovie ? (
