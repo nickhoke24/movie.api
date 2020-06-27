@@ -60,10 +60,14 @@
 
 import React from "react";
 import axios from "axios";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { RegistrationView } from "../registration-view/registration-view";
 
 export class MainView extends React.Component {
   constructor() {
@@ -125,11 +129,17 @@ export class MainView extends React.Component {
           <MovieView movie={selectedMovie} />
         ) : (
           movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
-              movie={movie}
-              onClick={(movie) => this.onMovieClick(movie)}
-            />
+            <Container>
+              <Row>
+                <Col>
+                  <MovieCard
+                    key={movie._id}
+                    movie={movie}
+                    onClick={(movie) => this.onMovieClick(movie)}
+                  />
+                </Col>
+              </Row>
+            </Container>
           ))
         )}
       </div>
