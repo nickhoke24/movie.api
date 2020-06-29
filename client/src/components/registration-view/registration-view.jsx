@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
+import PropTypes from "prop-types";
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -87,3 +88,7 @@ export function RegistrationView(props) {
     </Container>
   );
 }
+
+RegistrationView.propTypes = {
+  onNewUserRegistered: PropTypes.func.isRequired,
+};

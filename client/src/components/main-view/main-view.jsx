@@ -63,6 +63,7 @@ import axios from "axios";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import PropTypes from "prop-types";
 
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -146,3 +147,7 @@ export class MainView extends React.Component {
     );
   }
 }
+
+MainView.propTypes = {
+  // so far no props needed
+};
