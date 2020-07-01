@@ -111,6 +111,12 @@ export class MainView extends React.Component {
     });
   }
 
+  onBackClick() {
+    this.setState({
+      selectedMovie: null,
+    });
+  }
+
   // This overrides the render() method of the superclass
   // No need to call super() though, as it does nothing by default
   render() {
@@ -127,7 +133,10 @@ export class MainView extends React.Component {
     return (
       <div className="main-view">
         {selectedMovie ? (
-          <MovieView movie={selectedMovie} />
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={() => this.onBackClick()}
+          />
         ) : (
           movies.map((movie) => (
             <Container>

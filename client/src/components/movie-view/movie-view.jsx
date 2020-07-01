@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   constructor() {
     super();
-
     this.state = {};
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, onBackClick } = this.props;
 
     if (!movie) return null;
 
@@ -33,6 +33,7 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
+        <button onClick={() => onBackClick()}>Go Back</button>
       </div>
     );
   }
