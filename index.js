@@ -57,7 +57,9 @@ app.get("/", function (req, res) {
 
 // Return all movies
 app.get(
-  "/movies", (req, res) => {
+  "/movies", passport.authenticate('jwt', {
+    session: false
+  }), (req, res) => {
     Movies.find().then((movies) => res.json(movies));
   }
 );
