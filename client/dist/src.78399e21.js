@@ -38282,9 +38282,7 @@ function LoginView(props) {
     variant: "primary",
     type: "submit",
     onClick: handleSubmit
-  }, "Login"), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
-    variant: "primary"
-  }, "Register"));
+  }, "Login"));
 }
 
 LoginView.propTypes = {
@@ -49880,7 +49878,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49683" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59963" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

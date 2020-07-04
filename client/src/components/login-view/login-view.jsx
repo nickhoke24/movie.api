@@ -49,9 +49,6 @@ export function LoginView(props) {
       <Button variant="primary" type="submit" onClick={handleSubmit}>
         Login
       </Button>
-      <br></br>
-      <br></br>
-      <Button variant="primary">Register</Button>
     </Form>
   );
 }
