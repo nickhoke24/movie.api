@@ -19,7 +19,7 @@ export function RegistrationView(props) {
 
     /* Send a request to the server for authentication */
     axios
-      .post("https://vfa.herokuapp.com/users", {
+      .post("https://myflixdbnickhoke.herokuapp.com/users", {
         Username: username,
         Password: password,
         Email: email,
@@ -27,12 +27,11 @@ export function RegistrationView(props) {
       })
       .then((response) => {
         const data = response.data;
-        // console.log(data);
-        window.open("/", "_self");
+        console.log(data);
+        window.open("/", "_self"); // the second argument '_self' is necessary so that the page will open in the current tab
       })
       .catch((e) => {
-        alert(e);
-        console.log(e);
+        console.log("error registering the user");
       });
   };
 
