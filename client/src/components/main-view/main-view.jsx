@@ -18,6 +18,8 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { About } from "../header/about";
+import { Contact } from "../header/contact";
 
 export class MainView extends React.Component {
   constructor() {
@@ -26,6 +28,7 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       user: null,
+      profileInfo: null,
     };
   }
 
@@ -36,6 +39,7 @@ export class MainView extends React.Component {
         user: localStorage.getItem("user"),
       });
       this.getMovies(accessToken);
+      this.getAccount(accessToken);
     }
   }
 
@@ -82,28 +86,85 @@ export class MainView extends React.Component {
     window.open("/", "_self");
   }
 
+  getAccount(accessToken) {
+    const url =
+      "https://myflixdbnickhoke.herokuapp.com/users/" +
+      localStorage.getItem("user");
+    console.log(url);
+    axios
+      .get(url, {
+        headers: { Authorization: "Bearer " + accessToken },
+      })
+      .then((response) => {
+        // console.log(response.data);
+        // Assign result to a state
+        this.setState({
+          profileInfo: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
-    const { movies, user } = this.state;
+    const { movies, user, profileInfo } = this.state;
 
     if (!movies) return <div className="main-view" />;
 
     return (
       <Router>
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">MyFlix</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/user">
-              Profile
-            </Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#logout">Contact</Nav.Link>
-            <Button
-              variant="outline-secondary"
-              onClick={() => this.onLoggedOut()}
-            >
-              Logout
-            </Button>
-          </Nav>
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand>
+            <h1>My Flix</h1>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              {/* <Nav.Link as={Link} to="/">
+                <h3>Home</h3>
+              </Nav.Link>
+              <Nav.Link as={Link} to="/user">
+                <h3>Profile</h3>
+              </Nav.Link>
+              <Button
+                variant="outline-secondary"
+                onClick={() => this.onLoggedOut()}
+              >
+                <b>Log Out</b>
+              </Button> */}
+              {!user ? (
+                <ul>
+                  <Link to={`/`}>
+                    <Button variant="link">login</Button>
+                  </Link>
+                  <Link to={`/register`}>
+                    <Button variant="link">Register</Button>
+                  </Link>
+                </ul>
+              ) : (
+                <ul>
+                  <Link to={`/`}>
+                    <Button variant="link" onClick={() => this.onLoggedOut()}>
+                      Log out
+                    </Button>
+                  </Link>
+                  <Link to={`/user/`}>
+                    <Button variant="link">Profile</Button>
+                  </Link>
+                  <Link to={`/`}>
+                    <Button variant="link">Movies</Button>
+                  </Link>
+                  <Link to={`/about`}>
+                    <Button variant="link">About</Button>
+                  </Link>
+                  <Link to={`/contact`}>
+                    <Button variant="link">Contact</Button>
+                  </Link>
+                </ul>
+              )}
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
         <br></br>
         <div className="main-view">
@@ -155,10 +216,24 @@ export class MainView extends React.Component {
             }}
           />
           <Route
-            exact
-            path="/user"
-            render={() => <ProfileView movies={movies} />}
+            path="/user/"
+            render={() => (
+              <ProfileView
+                user={user}
+                profileInfo={this.state.profileInfo}
+                movies={movies}
+                logOutFunc={() => this.logOut()}
+              />
+            )}
           />
+          <Route
+            path="/Update/:name"
+            render={() => (
+              <UpdateView user={user} profileInfo={this.state.profileInfo} />
+            )}
+          />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
         </div>
       </Router>
     );
@@ -169,48 +244,247 @@ MainView.propTypes = {
   // so far no props needed
 };
 
-// onBackClick() {
-//   this.setState({
-//     selectedMovie: null,
-//   });
-// }
+// import React from "react";
+// import axios from "axios";
 
-// This overrides the render() method of the superclass
-// No need to call super() though, as it does nothing by default
+// import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// import { LoginView } from "../login-view/login-view";
+// import { RegistrationView } from "../registration-view/registration-view";
+// import { MovieCard } from "../movie-card/movie-card";
+// import { MovieView } from "../movie-view/movie-view";
+// import { ProfileView } from "../profile-view/profile-view";
+// import { DirectorView } from "../director-view/director-view";
+// import { GenreView } from "../genre-view/genre-view";
+// // import { UpdateView } from "../update-view/update-view";
+// import Button from "react-bootstrap/Button";
+// import Navbar from "react-bootstrap/Navbar";
+// import { Link } from "react-router-dom";
+// import "./main-view.scss";
+// import Row from "react-bootstrap/Row";
+// import Container from "react-bootstrap/Container";
+// import Col from "react-bootstrap/Col";
+
+// export class MainView extends React.Component {
+//   constructor() {
+//     // Call the superclass constructor
+//     // so React can initialize it
+//     super();
+
+//     // Initialize the state to an empty object so we can destructure it later
+//     this.state = {
+//       movies: [],
+//       user: null,
+//       profileInfo: null,
+//     };
+//   }
+
+//   getMovies(token) {
+//     axios
+//       .get("https://myflixdbnickhoke.herokuapp.com/movies", {
+//         headers: { Authorization: "Bearer " + token },
+//       })
+//       .then((response) => {
+//         // Assign result to a state
+//         this.setState({
+//           movies: response.data,
+//         });
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   }
+
+//   getAccount(accessToken) {
+//     const url =
+//       "https://myflixdbnickhoke.herokuapp.com/users/" +
+//       localStorage.getItem("user");
+//     console.log(url);
+//     axios
+//       .get(url, {
+//         headers: { Authorization: "Bearer " + accessToken },
+//       })
+//       .then((response) => {
+//         // console.log(response.data);
+//         // Assign result to a state
+//         this.setState({
+//           profileInfo: response.data,
+//         });
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+//   }
+
+//   componentDidMount() {
+//     //  Get value of token from localStorage if present
+//     let accessToken = localStorage.getItem("token");
+//     if (accessToken !== null) {
+//       this.setState({
+//         user: localStorage.getItem("user"),
+//       });
+//       this.getMovies(accessToken);
+//       this.getAccount(accessToken);
+//     }
+//   }
+
+//   logOut() {
+//     localStorage.removeItem("token");
+//     localStorage.removeItem("user");
+//     localStorage.removeItem("id");
+//     this.setState({
+//       user: null,
+//     });
+//   }
+
+//   onLoggedIn(authData) {
+//     this.setState({
+//       user: authData.user.Username,
+//     });
+//     // Add authData to browser's cache (that we got from props.logInFunc(data) in the profile.view)
+//     localStorage.setItem("token", authData.token);
+//     localStorage.setItem("user", authData.user.Username);
+//     localStorage.setItem("id", authData.user._id);
+//     // Calls endpoint once user is logged in
+//     this.getMovies(authData.token);
+//     this.getAccount(authData.token);
+//   }
+
 //   render() {
 //     // If the state isn't initialized, this will throw on runtime
 //     // before the data is initially loaded
-//     const { movies, selectedMovie, user } = this.state;
+//     const { movies, user, profileInfo } = this.state;
 
-//     if (!user)
-//       return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+//     // Logging to check states
+//     // console.log('M = ' + movies);
+//     // console.log('U = ' + user);
+//     // console.log('pi =' + profileInfo);
 
 //     // Before the movies have been loaded
-//     if (!movies) return <div className="main-view" />;
+//     if (!movies && !profileInfo) return <div className="main-view" />;
 
 //     return (
-//       <div className="main-view">
-//         {selectedMovie ? (
-//           <MovieView
-//             movie={selectedMovie}
-//             onBackClick={() => this.onBackClick()}
+//       <Router>
+//         <div className="main-view text-center container-fluid main-view-styles ">
+//           {/* Nav start */}
+
+//           <Navbar
+//             sticky="top"
+//             bg="light"
+//             expand="lg"
+//             className="mb-3 shadow-sm p-3 mb-5"
+//           >
+//             <Navbar.Brand
+//               href="http://localhost:1234/"
+//               className="navbar-brand"
+//             >
+//               VFA
+//             </Navbar.Brand>
+//             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//             <Navbar.Collapse
+//               className="justify-content-end"
+//               id="basic-navbar-nav"
+//             >
+//               {!user ? (
+//                 <ul>
+//                   <Link to={`/`}>
+//                     <Button variant="link">login</Button>
+//                   </Link>
+//                   <Link to={`/register`}>
+//                     <Button variant="link">Register</Button>
+//                   </Link>
+//                 </ul>
+//               ) : (
+//                 <ul>
+//                   <Link to={`/`}>
+//                     <Button variant="link" onClick={() => this.logOut()}>
+//                       Log out
+//                     </Button>
+//                   </Link>
+//                   <Link to={`/user/`}>
+//                     <Button variant="link">Account</Button>
+//                   </Link>
+//                   <Link to={`/`}>
+//                     <Button variant="link">Movies</Button>
+//                   </Link>
+//                   {/* <Link to={`/about`}>
+//                     <Button variant="link">About</Button>
+//                   </Link>
+//                   <Link to={`/contact`}>
+//                     <Button variant="link">Contact</Button>
+//                   </Link> */}
+//                 </ul>
+//               )}
+//             </Navbar.Collapse>
+//           </Navbar>
+//           {/* Nav end */}
+//           {/* If this.user === null don't show Link */}
+//           <Route
+//             exact
+//             path="/"
+//             render={() => {
+//               if (!user)
+//                 return (
+//                   <LoginView logInFunc={(user) => this.onLoggedIn(user)} />
+//                 );
+//               return (
+//                 <div className="row d-flex mt-4 ml-2">
+//                   {movies.map((m) => (
+//                     <MovieCard key={m._id} movie={m} />
+//                   ))}
+//                 </div>
+//               );
+//             }}
 //           />
-//         ) : (
-//           movies.map((movie) => (
-//             <Container>
-//               <Row>
-//                 <Col>
-//                   <MovieCard
-//                     key={movie._id}
-//                     movie={movie}
-//                     onClick={(movie) => this.onMovieClick(movie)}
-//                   />
-//                 </Col>
-//               </Row>
-//             </Container>
-//           ))
-//         )}
-//       </div>
+//           <Route
+//             path="/movies/:movieId"
+//             render={({ match }) => (
+//               <MovieView
+//                 movie={movies.find((m) => m._id === match.params.movieId)}
+//               />
+//             )}
+//           />
+//           <Route
+//             path="/user/"
+//             render={() => (
+//               <ProfileView
+//                 user={user}
+//                 profileInfo={this.state.profileInfo}
+//                 movies={movies}
+//                 logOutFunc={() => this.logOut()}
+//               />
+//             )}
+//           />
+//           {/* <Route
+//             path="/Update/:name"
+//             render={() => (
+//               <UpdateView user={user} profileInfo={this.state.profileInfo} />
+//             )}
+//           /> */}
+//           <Route
+//             path="/directors/:name"
+//             render={({ match }) => (
+//               <DirectorView
+//                 director={movies.find(
+//                   (m) => m.Director.Name === match.params.name
+//                 )}
+//                 movies={movies}
+//               />
+//             )}
+//           />
+//           <Route
+//             path="/genres/:name"
+//             render={({ match }) => (
+//               <GenreView
+//                 genre={movies.find((m) => m.Genre.Name === match.params.name)}
+//                 movies={movies}
+//               />
+//             )}
+//           />
+
+//           <Route path="/register" render={() => <RegistrationView />} />
+//         </div>
+//       </Router>
 //     );
 //   }
 // }
