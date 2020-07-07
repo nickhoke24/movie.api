@@ -1,41 +1,80 @@
-const express = require("express"),
-  morgan = require("morgan");
-const app = express();
-const bodyParser = require("body-parser");
-// const Movies = require("./movies");
-// const Users = require("./users");
-app.use(morgan("common"));
-app.use(express.static("public"));
-app.use(bodyParser.json());
-const uuid = require("uuid");
-const mongoose = require("mongoose");
-const Models = require("./models.js");
+// const express = require("express"),
+//   morgan = require("morgan");
+// const app = express();
+// const bodyParser = require("body-parser");
+// // const Movies = require("./movies");
+// // const Users = require("./users");
+// app.use(morgan("common"));
+// app.use(express.static("public"));
+// app.use(bodyParser.json());
+// const uuid = require("uuid");
+// const mongoose = require("mongoose");
+// const Models = require("./models.js");
+// const Movies = Models.Movie;
+// const Users = Models.User;
+// // mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+// //   useNewUrlParser: true,
+// //   useUnifiedTopology: true,
+// // });
+// mongoose.connect(
+//   "mongodb+srv://nickhoke:nickhoke@myflixdb-jpp8n.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   }
+// );
+// const passport = require("passport");
+// require("./passport");
+// let auth = require("./auth")(app);
+// // const cors = require("cors");
+// // app.use(cors());
+// const {
+//   check,
+//   validationResult
+// } = require("express-validator");
+
+// var cors = require("cors");
+// var app = express();
+// app.use(cors());
+
+const express = require('express'),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose'),
+  Models = require('./models.js'),
+  uuid = require('uuid'),
+  passport = require('passport'),
+  cors = require('cors'),
+  path = require('path');
+
+const check = require('express-validator/check').check;
+const validationResult = require('express-validator/check').validationResult;
+
+require('./passport.js');
+
 const Movies = Models.Movie;
 const Users = Models.User;
-// mongoose.connect("mongodb://localhost:27017/myFlixDB", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
+
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', {
+//   useNewUrlParser: true
 // });
+
 mongoose.connect(
-  "mongodb+srv://nickhoke:nickhoke@myflixdb-jpp8n.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  'mongodb+srv://nickhoke:nickhoke@myflixdb-jpp8n.mongodb.net/myFlixDB?retryWrites=true&w=majority', {
+    useNewUrlParser: true
   }
 );
-const passport = require("passport");
-require("./passport");
-let auth = require("./auth")(app);
-// const cors = require("cors");
-// app.use(cors());
-const {
-  check,
-  validationResult
-} = require("express-validator");
 
-var cors = require("cors");
-var app = express();
+const app = express();
+app.use(bodyParser.json());
+app.use(morgan('common'));
+app.use(express.static(path.resolve('dist')));
 app.use(cors());
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something ain\'t working right!');
+});
 
+var auth = require('./auth.js')(app);
 
 // // CORS implemented
 // let allowedOrigins = ["http://localhost:8080", "http://testsite.com", "http://localhost:1234", "*"];
