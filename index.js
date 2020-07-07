@@ -25,30 +25,35 @@ mongoose.connect(
 const passport = require("passport");
 require("./passport");
 let auth = require("./auth")(app);
-const cors = require("cors");
-app.use(cors());
+// const cors = require("cors");
+// app.use(cors());
 const {
   check,
   validationResult
 } = require("express-validator");
 
-// CORS implemented
-let allowedOrigins = ["http://localhost:8080", "http://testsite.com", "http://localhost:1234", "*"];
+var cors = require("cors");
+var app = express();
+app.use(cors());
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        let message =
-          "The CORS policy for the application doesn't allow access from origin " +
-          origin;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
-    },
-  })
-);
+
+// // CORS implemented
+// let allowedOrigins = ["http://localhost:8080", "http://testsite.com", "http://localhost:1234", "*"];
+
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         let message =
+//           "The CORS policy for the application doesn't allow access from origin " +
+//           origin;
+//         return callback(new Error(message), false);
+//       }
+//       return callback(null, true);
+//     },
+//   })
+// );
 
 // general get request
 app.get("/", function (req, res) {
