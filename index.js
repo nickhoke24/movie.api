@@ -36,20 +36,20 @@
 // var app = express();
 // app.use(cors());
 
-const express = require('express'),
-  morgan = require('morgan'),
-  bodyParser = require('body-parser'),
-  mongoose = require('mongoose'),
-  Models = require('./models.js'),
-  uuid = require('uuid'),
-  passport = require('passport'),
-  cors = require('cors'),
-  path = require('path');
+const express = require("express"),
+  morgan = require("morgan"),
+  bodyParser = require("body-parser"),
+  mongoose = require("mongoose"),
+  Models = require("./models.js"),
+  uuid = require("uuid"),
+  passport = require("passport"),
+  cors = require("cors"),
+  path = require("path");
 
-const check = require('express-validator/check').check;
-const validationResult = require('express-validator/check').validationResult;
+const check = require("express-validator/check").check;
+const validationResult = require("express-validator/check").validationResult;
 
-require('./passport.js');
+require("./passport.js");
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -59,22 +59,22 @@ const Users = Models.User;
 // });
 
 mongoose.connect(
-  'mongodb+srv://nickhoke:nickhoke@myflixdb-jpp8n.mongodb.net/myFlixDB?retryWrites=true&w=majority', {
-    useNewUrlParser: true
+  "mongodb+srv://nickhoke:nickhoke@myflixdb-jpp8n.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
   }
 );
 
 const app = express();
 app.use(bodyParser.json());
-app.use(morgan('common'));
-app.use(express.static(path.resolve('dist')));
+app.use(morgan("common"));
+app.use(express.static(path.resolve("dist")));
 app.use(cors());
 app.use(function (err, req, res, next) {
   console.error(err.stack);
-  res.status(500).send('Something ain\'t working right!');
+  res.status(500).send("Something ain't working right!");
 });
 
-var auth = require('./auth.js')(app);
+var auth = require("./auth.js")(app);
 
 // // CORS implemented
 // let allowedOrigins = ["http://localhost:8080", "http://testsite.com", "http://localhost:1234", "*"];
@@ -101,9 +101,11 @@ app.get("/", function (req, res) {
 
 // Return all movies
 app.get(
-  "/movies", passport.authenticate('jwt', {
-    session: false
-  }), (req, res) => {
+  "/movies",
+  passport.authenticate("jwt", {
+    session: false,
+  }),
+  (req, res) => {
     Movies.find().then((movies) => res.json(movies));
   }
 );
@@ -172,13 +174,32 @@ app.get("/users", (req, res) => {
   Users.find().then((users) => res.json(users));
 });
 
-app.get("/users/:Username", (req, res) => {
-  res.json(
-    users.find((user) => {
-      return user.Username === req.params.Username;
-    })
-  );
-});
+// app.get("/users/:Username", (req, res) => {
+//   res.json(
+//     users.find((user) => {
+//       return user.Username === req.params.Username;
+//     })
+//   );
+// });
+
+app.get(
+  "/users/:Username",
+  passport.authenticate("jwt", {
+    session: false
+  }),
+  function (req, res) {
+    Users.findOne({
+        Username: req.params.Username
+      })
+      .then(function (user) {
+        res.json(user);
+      })
+      .catch(function (err) {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
 
 // Allow new user to register
 app.post(
