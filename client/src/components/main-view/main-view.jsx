@@ -20,6 +20,7 @@ import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { About } from "../header/about";
 import { Contact } from "../header/contact";
+import { UpdateProfile } from "../update-profile/update-profile";
 
 export class MainView extends React.Component {
   constructor() {
@@ -121,18 +122,6 @@ export class MainView extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              {/* <Nav.Link as={Link} to="/">
-                <h3>Home</h3>
-              </Nav.Link>
-              <Nav.Link as={Link} to="/user">
-                <h3>Profile</h3>
-              </Nav.Link>
-              <Button
-                variant="outline-secondary"
-                onClick={() => this.onLoggedOut()}
-              >
-                <b>Log Out</b>
-              </Button> */}
               {!user ? (
                 <ul>
                   <Link to={`/`}>
@@ -229,7 +218,7 @@ export class MainView extends React.Component {
           <Route
             path="/Update/:name"
             render={() => (
-              <UpdateView user={user} profileInfo={this.state.profileInfo} />
+              <UpdateProfile user={user} profileInfo={this.state.profileInfo} />
             )}
           />
           <Route path="/about" component={About} />

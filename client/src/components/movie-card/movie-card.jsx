@@ -2,10 +2,31 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
+  addFavorite(movie) {
+    let token = localStorage.getItem("token");
+    let url =
+      "https://myflixdbnickhoke.herokuapp.com/users/" +
+      localStorage.getItem("user") +
+      "/Movies/" +
+      movie._id;
+
+    console.log(token);
+
+    axios
+      .post(url, "", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response);
+        window.open("/", "_self");
+      });
+  }
+
   render() {
     const { movie } = this.props;
 
@@ -24,6 +45,9 @@ export class MovieCard extends React.Component {
           <Link to={`/genres/${movie.Genre.Name}`}>
             <Button variant="link">Genre</Button>
           </Link>
+          <Button variant="link" onClick={() => this.addFavorite(movie)}>
+            Add Favorite
+          </Button>
         </Card.Body>
       </Card>
     );
