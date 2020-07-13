@@ -7,9 +7,8 @@ const express = require("express"),
   uuid = require("uuid"),
   passport = require("passport"),
   cors = require("cors"),
-  path = require("path");
 
-const check = require("express-validator/check").check;
+  const check = require("express-validator/check").check;
 const validationResult = require("express-validator/check").validationResult;
 
 require("./passport.js");
