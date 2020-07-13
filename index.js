@@ -2,14 +2,14 @@ const path = require("path");
 const express = require("express"),
   morgan = require("morgan"),
   bodyParser = require("body-parser"),
-  mongoose = require("mongoose"),
-  Models = require("./models.js"),
-  uuid = require("uuid"),
-  passport = require("passport"),
-  cors = require("cors"),
+  uuid = require("uuid");
 
-  const check = require("express-validator/check").check;
+const check = require("express-validator/check").check;
 const validationResult = require("express-validator/check").validationResult;
+mongoose = require("mongoose");
+Models = require("./models.js");
+passport = require("passport");
+cors = require("cors");
 
 require("./passport.js");
 
